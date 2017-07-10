@@ -213,6 +213,13 @@ public class SpeedTestTask {
                             "\r\n\r\n";
                     writeDownload(downloadRequest.getBytes());
                     break;
+                case "https":
+                    this.mHostname = url.getHost();
+                    this.mPort = url.getPort() != -1 ? url.getPort() : 443;
+                    final String downloadRequest = "GET " + uri + " HTTP/1.1\r\n" + "Host: " + url.getHost() +
+                            "\r\n\r\n";
+                    writeDownload(downloadRequest.getBytes());
+                    break;
                 case "ftp":
 
                     final String userInfo = url.getUserInfo();
